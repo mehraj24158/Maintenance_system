@@ -1,8 +1,15 @@
-from django.shortcuts import render
-
-# Create your views here.
 from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("Hello World, Welcome to the login page")
+    return HttpResponse("Welcome to the index")
+
+def hello(request):
+    return HttpResponse("Hello world.")
+
+def bye(request):
+    return HttpResponse("Good bye world")
+
+def greet(request, name):
+    return HttpResponse(f"Greetings mon {name.capitalize()}!")
+
