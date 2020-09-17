@@ -2,26 +2,29 @@ from abc import ABC, abstractmethod
 
 class User(ABC):
     """
-    Base Class for Technicians, Residents, and Admins:
+    Abstract Base Class for Technicians, Residents, and Admins:
 
     Name: First and last name separated by a space
     ID: Numerical number, 8 digits long
-    History: Stores history of associated ticket ID's
+    Phone_number: Numerical, no dashes, 10 digits long
+    Email: Valid email
     """
-    def __init__(self, name, id, phone_number, email):
+    def __init__(self, name, id, password, phone_number, email):
         self.name = name
         self.id = id
-        self.phone_number = phone_number
+        self.ps = password
+        self.phone = phone_number
         self.email = email
 
-class person(User):
-    def __init__():
-        super(person, self).__init__()
 
-        
+class Person(User):
+    #def __init__():
+        #super(person, self).__init__(name, id, phone_number, email)
+    
+    def hello(self):
+        print("hello")
 
-
-
+    pass
 
 class Technician:
     """
@@ -50,8 +53,6 @@ class Technician:
 
     def bonus(self, bonus):
         self.bonus = bonus
-
-    def (self, ):
 
 
 class Customer:
