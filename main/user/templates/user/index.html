@@ -1,5 +1,7 @@
-[% extends user/layout.html %]
+{% extends "user/layout.html" %}
 
-[% block body %]
+{% block body %}
     <h1>Welcome to the index</h1>
-[% endblock %]
+    <a href="login">Login</a>
+    <a href="register">Register</a>
+{% endblock %}

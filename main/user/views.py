@@ -5,7 +5,14 @@ from django.http import HttpResponse
 
 def index(request):
     return render(request, "user/index.html")
+
+
 def login(request):
-    return HttpResponse("Welcome to the login page")
+    return render(request, "user/login.html")
+
+def logout(request):
+    return render(request, 'user/logout.html')
+
+
 def register(request):
-    return HttpResponse("Welcome to the register page")
+    return render(request, "user/register.html")

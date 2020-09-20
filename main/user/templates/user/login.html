@@ -1,14 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <h1>Welcome to the index page</h1>
+{% extends "user/layout.html" %}
 
+{% block body %}
+<h1>Welcome to the login page</h1>
+    {% if message %}
+    <div>
+        {{message}}
+    </div>
+    {% endif %}
 
-    </head>
-
-    <body>
-        <h1>login link</h1>
-        <h1>register link</h1>
-    </body>
-
-</html>
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <input type="text", name="username", placeholder="Username">
+        <input type="password", name="password", placeholder="Password">
+        <input type="submit", value="Login">
+    </form>
+{% endblock %}
