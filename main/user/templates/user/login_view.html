@@ -1,0 +1,11 @@
+{% extends "user/layout.html" %}
+
+{% block body %}
+<h1>You have Logged in Successfully!</h1>
+    {% if message %}
+    <div>
+        {{message}}
+    </div>
+    {% endif %}
+
+{% endblock %}

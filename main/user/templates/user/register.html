@@ -1,5 +1,15 @@
-{% extends "user/layout.html" %}
+{% extends "user/layout.htm" %}
 
 {% block body %}
-    <h1>Welcome to the register page</h1>
+    <h1>Welcome to the Register Page</h1>
+
+    <form action="{urls 'user:register'}" method="POST">
+        {% csrf_token %}
+        <input type="text", name="username", placeholder="Username">
+        <input type="text", name="phone_number", placeholder="Phone Number">
+        <input type="password", name="password", placeholder="Password">
+        <input type="password", name = "password-confirm", placeholder="Confirm Password">
+        <input type="submit", value="submit">
+    </form>
+
 {% endblock %}
