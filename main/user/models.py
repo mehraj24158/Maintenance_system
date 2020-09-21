@@ -1,5 +1,5 @@
 from django.db import models
-from enum import Enum, auto
+from enum import Enum
 
 class Status(Enum):
     active = 1
@@ -10,7 +10,8 @@ class User(models.Model):
     username = models.CharField(max_length=64)
     f_name = models.CharField(max_length=64)
     l_name = models.CharField(max_length=64)
-    phone_number = models.CharField(max_length=64)
+    phone_number = models.CharField(max_length=10)
+    email = models.EmailField(max_length=64)
     password = models.CharField(max_length=64)
 
 class Resident(models.Model):
@@ -24,5 +25,3 @@ class Ticket(models.Model):
     resident = models.ForeignKey(Resident, on_delete=models.PROTECT)
     description = models.CharField(max_length=280)
     Status = Status.active
-
-    
