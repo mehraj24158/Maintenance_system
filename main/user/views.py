@@ -11,11 +11,8 @@ def index(request):
 
 
 def login_view(request):
-    return render(request, "user/login_view.html")
-
-
-# def logout(request):
-#     return render(request, 'user/logout.html')
+    if request.user.is_authenticated:
+        return render(request, "user/login_view.html")
 
 
 def register(request):
