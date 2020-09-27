@@ -55,12 +55,11 @@ class Ticket(models.Model):
     """
     technician = models.ForeignKey(Technician, on_delete=models.PROTECT)
     resident = models.ForeignKey(Resident, on_delete=models.PROTECT)
-    appointment = models.ForeignKey(Appointment, on_delete=models.CASCADE)
+    appointment = None
     description = models.CharField(max_length=280)
     date_created = models.DateField()
     date_completed = models.DateField()
     status = Status.active
 
     def create_appointment():
-        pass
-        #self.appointment = Appointment
+        self.appointment = models.ForeignKey(Appointment, on_delete=models.CASCADE)
