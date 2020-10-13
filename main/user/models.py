@@ -35,20 +35,6 @@ class Technician(User):
     """
     date_hired = models.DateField()
 
-class Appointment(models.Model):
-    """
-    Appointment class containing appointment information
-    """
-    date = models.DateTimeField
-    tech_confirm = False
-    res_confirm = False
-
-    def confirm():
-        if tech_confirm == True and res_confirm == True:
-            return True
-        else:
-            return False
-
 class Ticket(models.Model):
     """
     Ticket class containing ticket specific information
@@ -61,5 +47,17 @@ class Ticket(models.Model):
     date_completed = models.DateField()
     status = Status.active
 
-    def create_appointment():
-        self.appointment = models.ForeignKey(Appointment, on_delete=models.CASCADE)
+class Appointment(models.Model):
+    """
+    Appointment class containing appointment information
+    """
+    date = models.DateTimeField()
+    ticket = models.ForeignKey(Ticket, on_delete=models.PROTECT)
+    tech_confirm = False
+    res_confirm = False
+
+    def confirm():
+        if tech_confirm == True and res_confirm == True:
+            return True
+        else:
+            return False
