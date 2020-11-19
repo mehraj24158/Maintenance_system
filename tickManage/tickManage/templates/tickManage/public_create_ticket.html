@@ -1,0 +1,23 @@
+{% extends "tickManage/public_base.html" %}
+ 
+
+{% block tickManage_title %}{% trans "Create Ticket" %}{% endblock %}
+
+{% block tickManage_breadcrumb %}
+<li class="breadcrumb-item">
+    <a href="{% url 'tickManage:home' %}">Public</a>
+</li>
+<li class="breadcrumb-item active">Create Ticket</li>
+{% endblock %}
+
+{% block tickManage_body %}
+<div class="container">
+    <div class="card card-register mx-auto mt-5">
+        <div class="card-header">{% trans "Submit a Ticket" %}</div>
+        <div class="card-body">
+            {% include 'tickManage/public_create_ticket_base.html' %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+ 
+{% load saved_queries %}
+<!DOCTYPE html>
+<head>
+    {% include 'tickManage/base-head.html' %}
+    {% block tickManage_head %}{% endblock %}
+</head>
+
+<body>
+    {% block tickManage_body %}
+    {% include 'tickManage/kb_category_base.html' %}
+    {% endblock %}
+    {% include 'tickManage/base_js.html' %}
+</body>

@@ -1,0 +1,28 @@
+{% extends "tickManage/base.html" %} {% load user_admin_url %}
+
+{% block tickManage_title %}{% trans "Change System Settings" %}{% endblock %}
+
+{% block tickManage_breadcrumb %}
+<li class="breadcrumb-item">
+    <a href="{% url 'tickManage:user_settings' %}">{% trans "Settings" %}</a>
+</li>
+<li class="breadcrumb-item active">
+    System Settings
+</li>
+{% endblock %}
+
+{% block tickManage_body %}
+<h2>{% trans "System Settings" %}</h2>
+
+<p>{% blocktrans %}The following items can be maintained by you or other superusers:{% endblocktrans %}</p>
+
+<ul>
+    <li><a href='{% url 'tickManage:email_ignore' %}'>{% trans "E-Mail Ignore list" %}</a></li>
+    <li><a href='{% url 'admin:tickManage_queue_changelist' %}'>{% trans "Maintain Queues" %}</a></li>
+    <li><a href='{% url 'admin:tickManage_presetreply_changelist' %}'>{% trans "Maintain Pre-Set Replies" %}</a></li>
+    <li><a href='{% url 'admin:tickManage_kbcategory_changelist' %}'>{% trans "Maintain Knowledgebase Categories" %}</a></li>
+    <li><a href='{% url 'admin:tickManage_kbitem_changelist' %}'>{% trans "Maintain Knowledgebase Items" %}</a></li>
+    <li><a href='{% url 'admin:tickManage_emailtemplate_changelist' %}'>{% trans "Maintain E-Mail Templates" %}</a></li>
+    <li><a href='{% url 'changelist'|user_admin_url %}'>{% trans "Maintain Users" %}</a></li>
+</ul>
+{% endblock %}

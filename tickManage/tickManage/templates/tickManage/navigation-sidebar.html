@@ -1,0 +1,80 @@
+{% load i18n tickManage_staff %}
+
+    <!-- Sidebar -->
+    <ul class="sidebar navbar-nav">
+    {% if tickManage_settings.TICKMANAGE_NAVIGATION_ENABLED and user.is_authenticated or user|is_tickManage_staff %}
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'tickManage:dashboard' %}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>{% trans "Dashboard" %}</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'tickManage:list' %}">
+            <i class="fas fa-fw fa-tasks"></i>
+            <span>{% trans "All Tickets" %}</span>
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="ticketsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-fw fa-search"></i>
+            <span>{% trans "Saved Queries" %}</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="ticketsDropdown">
+            {% if user_saved_queries_ %}
+            {% for q in user_saved_queries_ %}
+            <a class="dropdown-item small" href="{% url 'tickManage:list' %}?saved_query={{ q.id }}">{{ q.title }}
+                {% if q.shared %}
+                (Shared{% ifnotequal user q.user %} by {{ q.user.get_username }}{% endifnotequal %})
+                {% endif %}
+            </a>
+            {% endfor %}
+            {% else %}
+            <p class="dropdown-item small text-wrap">{% trans "No saved queries currently available. You can create one in the All Tickets page." %}</p>
+            {% endif %}
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'tickManage:submit' %}">
+            <i class="fas fa-fw fa-plus-circle"></i>
+            <span>{% trans "New Ticket" %}</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'tickManage:report_index' %}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>{% trans "Reports" %}</span>
+          </a>
+        </li>
+        {% if tickManage_settings.TICKMANAGE_KB_ENABLED %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'tickManage:kb_index' %}">
+            <i class="fas fa-fw fa-database"></i>
+            <span>{% trans "Knowledgebase" %}</span>
+          </a>
+        </li>
+        {% endif %}
+    {% else %}
+        {# Public menu #}
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'tickManage:home' %}">
+            <i class="fas fa-fw fa-home"></i>
+            <span>{% trans "Homepage" %}</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'tickManage:submit' %}">
+            <i class="fas fa-fw fa-plus-circle"></i>
+            <span>{% trans "New Ticket" %}</span>
+          </a>
+        </li>
+        {% if tickManage_settings.TICKMANAGE_KB_ENABLED %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'tickManage:kb_index' %}">
+            <i class="fas fa-fw fa-database"></i>
+            <span>{% trans "Knowledgebase" %}</span>
+          </a>
+        </li>
+        {% endif %}
+    {% endif %}
+    </ul>

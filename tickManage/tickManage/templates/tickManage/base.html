@@ -1,0 +1,54 @@
+ 
+{% load saved_queries %}
+{% load load_tickManage_settings %}
+{% load static %}
+{% with request|load_tickManage_settings as tickManage_settings %}
+{% with user|saved_queries as user_saved_queries_ %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    {% include 'tickManage/base-head.html' %}
+    {% block tickManage_head %}{% endblock %}
+
+</head>
+
+<body id="bg-dark">
+
+    {% include "tickManage/navigation-header.html" %}
+
+    <div id="wrapper">
+        {% include "tickManage/navigation-sidebar.html" %}
+
+        <div id="content-wrapper">
+        
+            <div class="container-fluid">
+
+                <!-- Breadcrumbs-->
+                <ol class="breadcrumb">
+                    {% block tickManage_breadcrumb %}{% endblock %}
+                </ol>
+            
+                {% block tickManage_body %}{% endblock %}
+            
+            </div>
+            <!-- /.container-fluid -->
+        
+            {% include "tickManage/attribution.html" %}
+        </div>
+        <!-- /.content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    {% include "tickManage/debug.html" %}
+
+
+    {% include 'tickManage/base_js.html' %}
+    {% block tickManage_js %}{% endblock %}
+
+</body>
+</html>
+{% endwith %}
+{% endwith %}

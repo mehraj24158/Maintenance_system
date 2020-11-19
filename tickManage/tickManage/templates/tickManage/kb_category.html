@@ -1,0 +1,17 @@
+{% extends "tickManage/public_base.html" %}
+ 
+
+{% block tickManage_title %}{% blocktrans with category.title as kbcat %}{{ kbcat }}{% endblocktrans %}{% endblock %}
+
+{% block tickManage_breadcrumb %}
+<li class="breadcrumb-item">
+    <a href="{% url 'tickManage:kb_index' %}">{% trans "Knowledgebase" %}</a>
+</li>
+<li class="breadcrumb-item active">{% blocktrans with category.title as kbcat %}{{ kbcat }}{% endblocktrans %}</li>
+{% endblock %}
+
+{% block tickManage_body %}
+{% include 'tickManage/kb_category_base.html' %}
+</div>
+
+{% endblock %}

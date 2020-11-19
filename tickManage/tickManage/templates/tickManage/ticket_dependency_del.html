@@ -1,0 +1,26 @@
+{% extends "tickManage/base.html" %} 
+
+{% block tickManage_title %}{% trans "Delete Ticket Dependency" %}{% endblock %}
+
+{% block tickManage_breadcrumb %}
+<li class="breadcrumb-item">
+    <a href="{% url 'tickManage:list' %}">{% trans "Tickets" %}</a>
+</li>
+<li class="breadcrumb-item">
+    <a href="{% url 'tickManage:list' %}{{ ticket.id }}/">{{ ticket.queue.slug }}-{{ ticket.id }}</a>
+</li>
+<li class="breadcrumb-item active">{% trans "Delete Ticket Dependency" %}</li>
+{% endblock %}
+
+{% block tickManage_body %}{% blocktrans %}
+<h2>Delete Ticket Dependency</h2>
+
+<p>Are you sure you wish to remove the dependency on this ticket?</p>
+{% endblocktrans %}
+
+<p><a href='../../'><button class="btn btn-primary btn-lg">{% trans "Don't Delete" %}</button></a></p>
+
+<form method='post' action='./'>
+    <button class="btn btn-danger" type='submit'>{% trans "Yes, I Understand - Delete" %}</button>
+{% csrf_token %}</form>
+{% endblock %}
