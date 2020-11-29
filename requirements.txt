@@ -1,0 +1,17 @@
+Django>=2.2,<4
+django-bootstrap4-form
+celery
+django-celery-beat
+email-reply-parser
+akismet
+markdown
+beautifulsoup4
+lxml
+simplejson
+pytz
+six
+djangorestframework
+django-model-utils
+
+# specific commit because the current release has no required library upgrade
+pinax-teams @ git+https://github.com/pinax/pinax-teams.git@dd75e1c#egg=pinax-teams
