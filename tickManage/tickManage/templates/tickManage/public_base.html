@@ -1,7 +1,9 @@
  
 {% load static %}
+
 {% load load_tickManage_settings %}
 {% with request|load_tickManage_settings as tickManage_settings %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,4 +48,5 @@
     {% block tickManage_js %}{% endblock %}
 </body>
 </html>
+
 {% endwith %}

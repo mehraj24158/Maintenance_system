@@ -1,8 +1,11 @@
  
 {% load saved_queries %}
-{% load load_tickManage_settings %}
 {% load static %}
+{% load i18n %}
+
+{% load load_tickManage_settings %}
 {% with request|load_tickManage_settings as tickManage_settings %}
+
 {% with user|saved_queries as user_saved_queries_ %}
 <!DOCTYPE html>
 <html lang="en">
